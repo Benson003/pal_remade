@@ -11,7 +11,7 @@ from app import session
 from app import db
 
 
-positions = ["President", "Vice President", "Secretary", "Treasurer"]
+positions = ["President", "Vice President", "Secretary", "Treasurer","Assistant Secretary","Financial Secretary","Public Relations Officer","Director of Socials","Director of Games","Director of Enviroment","Assitant Director of Enviroment","Director of Welfare"]
 
 admin_templates =  {
             None:"admin/index.html",
@@ -124,7 +124,7 @@ class Admin(MethodView):
             for user in users:
                 user.hasVoted = False
             for candidate in candidates:
-                candidate.votes = 0
+                db.session.delete(candidate)
 
             db.session.commit()
             flash("All polls have been reset")
