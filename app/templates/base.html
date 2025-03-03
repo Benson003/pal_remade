@@ -140,8 +140,7 @@
                     {% if session["email"] %}
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('index')}}">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('user_base')}}">Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('user_links',link_type = "
-                            logout")}}">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('user_links',link_type = "logout")}}">Logout</a></li>
 
                     {% else %}
 
@@ -174,7 +173,7 @@
     {% endwith %}
 
     <!-- Page Content -->
-    <div class="container">
+    <div class="container bg-dark bg-gradient">
         <div class="card">
             {% block content %} {% endblock %}
         </div>
@@ -182,7 +181,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Benzon Concepts. All rights reserved.</p>
+        <p>&copy; 2025 PALGUNN. All rights reserved.</p>
     </footer>
 
     <!-- Bootstrap Scripts -->
