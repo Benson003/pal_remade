@@ -2,7 +2,13 @@
 {% block title %}PALG UNN Voting{% endblock %}
 
 {% block content %}
-{% if voter.hasVoted != true %}
+{% if candidates|length == 0 %}
+    <div class="container text-center mt-5">
+        <h1 class="text-light">No Ongoing Polls</h1>
+        <p class="text-secondary">Please check back later.</p>
+    </div>
+
+{% elif voter.hasVoted != true %}
     <div class="container mt-4">
         <h1 class="text-center fw-bold mb-4 text-light">PALG UNN Voting</h1>
 
@@ -90,7 +96,6 @@
                 <thead class="thead-light">
                     <tr>
                         <th>Name</th>
-                        
                         <th>Votes</th>
                     </tr>
                 </thead>
@@ -98,7 +103,6 @@
                     {% for candidate in contenders %}
                         <tr>
                             <td>{{ candidate.full_name }}</td>
-
                             <td class="votes" data-reg="{{ candidate.reg_number }}">{{ candidate.votes }}</td>
                         </tr>
                     {% endfor %}

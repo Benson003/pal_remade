@@ -67,8 +67,8 @@ class Admin(MethodView):
                 session["isAdmin"] = True
                 session["fullname"] = admin.full_name
                 return redirect(url_for("admin_base"))
-        flash("It seems you dont have an account")
-        return redirect(url_for("admin_links",link_type ="signup"))
+        flash("Username or password is incorrect")
+        return redirect(url_for("admin_links",link_type ="login"))
     def signup(self,form_data):
         full_name = form_data.get("fullname")
         email = form_data.get("email")
@@ -120,15 +120,19 @@ class Admin(MethodView):
         users = dl.User().get_all_user()
         candidates = dl.ElectoralCandidates().get_all_candidates()
 
-        if users and candidates :
+
+        if users and candidates:
             for user in users:
                 user.hasVoted = False
+                db.session.add(user)  # Ensure each user is added to session
+
             for candidate in candidates:
                 db.session.delete(candidate)
 
-            db.session.commit()
-            flash("All polls have been reset")
+            db.session.commit()  # Commit the updated user vote statuses
 
+
+        flash("All polls have been reset", "success")
 
         return redirect(url_for("admin_base"))
 
