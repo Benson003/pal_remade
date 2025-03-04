@@ -90,7 +90,7 @@
                 <thead class="thead-light">
                     <tr>
                         <th>Name</th>
-                        <th>Registration Number</th>
+                        
                         <th>Votes</th>
                     </tr>
                 </thead>
@@ -98,7 +98,7 @@
                     {% for candidate in contenders %}
                         <tr>
                             <td>{{ candidate.full_name }}</td>
-                            <td>{{ candidate.reg_number }}</td>
+
                             <td class="votes" data-reg="{{ candidate.reg_number }}">{{ candidate.votes }}</td>
                         </tr>
                     {% endfor %}

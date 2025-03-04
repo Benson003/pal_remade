@@ -113,6 +113,7 @@
                     {% for candidate in contenders %}
                         <tr data-reg="{{ candidate.reg_number }}">
                             <td>{{ candidate.full_name }}</td>
+                            <td>{{ candidate.reg_number }}</td>
                             <td class="votes">{{ candidate.votes }}</td>
                         </tr>
                     {% endfor %}
